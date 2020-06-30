@@ -1,2 +1,1 @@
-# Tesla-Template
-A template repository for Tesla Overlay Homebrews
+ams cheat doesn't want to work so I just wrote this

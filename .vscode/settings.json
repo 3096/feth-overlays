@@ -52,6 +52,14 @@
         "codecvt": "cpp",
         "condition_variable": "cpp",
         "iomanip": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "stop_token": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "iostream": "cpp",
+        "ranges": "cpp"
     }
 }
