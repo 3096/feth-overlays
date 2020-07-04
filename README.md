@@ -7,11 +7,11 @@
 * When a new item is added, the Convoy amount number will increase, refresh the menu by scrolling to another tab and back to see the added item.
 * An item in a unit's inventory counts as it not being in the Convoy.
 
-![Quick Edit Example](Example1.jpg)
+![Quick Edit Example](/docs/images/Example1.jpg)
 
 ### Item ID
 * Set 4 digit ID for the item you want to add/edit.
-* [Refer to the text file for a listing of all item IDs.](feth_item_ids.txt)
+* [Refer to the text file for a listing of all item IDs.](/docs/feth_item_ids.txt)
 * Only weapons/equipment/item IDs should be used. Dishes/gambits/magic IDs will just take up a Convoy slot and not be visible in game.
 
 ### Item Durability
@@ -27,7 +27,7 @@
 * This menu will quickly let you set certain item categories you already have in your Convoy to x99. With certain options toggable.
 * To keep things "clean", leave the options to the defaults to only boost existing items to x99 when pressing each category.
 
-![Quick Edit Example](Example2.jpg)
+![Quick Edit Example](/docs/images/Example2.jpg)
 
 ### Items to Edit
 ```
