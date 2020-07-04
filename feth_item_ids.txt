@@ -1,0 +1,931 @@
+0010 - Unarmed
+0011 - Broken Sword
+0012 - Broken Lance
+0013 - Broken Axe
+0014 - Broken Bow
+0015 - Broken Gauntlet
+0016 - Iron Sword
+0017 - Steel Sword
+0018 - Silver Sword
+0019 - Brave Sword
+0020 - Killing Edge
+0021 - Training Sword
+0022 - Iron Lance
+0023 - Steel Lance
+0024 - Silver Lance
+0025 - Brave Lance
+0026 - Killer Lance
+0027 - Training Lance
+0028 - Iron Axe
+0029 - Steel Axe
+0030 - Silver Axe
+0031 - Brave Axe
+0032 - Killer Axe
+0033 - Training Axe
+0034 - Iron Bow
+0035 - Steel Bow
+0036 - Silver Bow
+0037 - Brave Bow
+0038 - Killer Bow
+0039 - Training Bow
+0040 - Iron Gauntlets
+0041 - Steel Gauntlets
+0042 - Silver Gauntlets
+0043 - Training Gauntlets
+0044 - Levin Sword
+0045 - Bolt Axe
+0046 - Magic Bow
+0047 - Javelin
+0048 - Short Spear
+0049 - Spear
+0050 - Hand Axe
+0051 - Short Axe
+0052 - Tomahawk
+0053 - Longbow
+0054 - Mini Bow
+0055 - Armorslayer
+0056 - Rapier
+0057 - Horseslayer
+0058 - Hammer
+0059 - Blessed Lance
+0060 - Blessed Bow
+0061 - Devil Sword
+0062 - Devil Axe
+0063 - Wo Dao
+0064 - Crescent Sickle
+0065 - Sword of Seiros
+0066 - Sword of Begalta
+0067 - Sword of Moralta
+0068 - Cursed Ashiya Sword
+0069 - Sword of Zoltan
+0070 - Thunderbrand
+0071 - Blutgang
+0072 - Sword of the Creator
+0073 - Lance of Zoltan
+0074 - Lance of Ruin
+0075 - Areadbhar
+0076 - Lúin
+0077 - Spear of Assal
+0078 - Scythe of Sariel
+0079 - Arrow of Indra
+0080 - Freikugel
+0081 - Crusher
+0082 - Axe of Ukonvasara
+0083 - Axe of Zoltan
+0084 - Tathlum Bow
+0085 - The Inexhaustible
+0086 - Bow of Zoltan
+0087 - Failnaught
+0088 - Dragon Claws
+0089 - Mace
+0090 - Athame
+0091 - Ridill
+0092 - Aymr
+0093 - Dark Creator Sword
+0094 - Venin Edge
+0095 - Venin Lance
+0096 - Venin Axe
+0097 - Venin Bow
+0098 - Mercurius
+0099 - Gradivus
+0100 - Hauteclere
+0101 - Parthia
+0102 - Killer Knuckles
+0103 - Aura Knuckles
+0104 - Rusted Sword
+0105 - Rusted Sword
+0106 - Rusted Sword
+0107 - Rusted Sword
+0108 - Rusted Sword
+0109 - Rusted Lance
+0110 - Rusted Lance
+0111 - Rusted Lance
+0112 - Rusted Lance
+0113 - Rusted Lance
+0114 - Rusted Axe
+0115 - Rusted Axe
+0116 - Rusted Axe
+0117 - Rusted Axe
+0118 - Rusted Axe
+0119 - Rusted Bow
+0120 - Rusted Bow
+0121 - Rusted Bow
+0122 - Rusted Bow
+0123 - Rusted Bow
+0124 - Rusted Gauntlets
+0125 - Rusted Gauntlets
+0126 - Rusted Gauntlets
+0127 - Rusted Gauntlets
+0128 - Iron Sword+
+0129 - Steel Sword+
+0130 - Silver Sword+
+0131 - Brave Sword+
+0132 - Killing Edge+
+0133 - Training Sword+
+0134 - Iron Lance+
+0135 - Steel Lance+
+0136 - Silver Lance+
+0137 - Brave Lance+
+0138 - Killer Lance+
+0139 - Training Lance+
+0140 - Iron Axe+
+0141 - Steel Axe+
+0142 - Silver Axe+
+0143 - Brave Axe+
+0144 - Killer Axe+
+0145 - Training Axe+
+0146 - Iron Bow+
+0147 - Steel Bow+
+0148 - Silver Bow+
+0149 - Brave Bow+
+0150 - Killer Bow+
+0151 - Training Bow+
+0152 - Iron Gauntlets+
+0153 - Steel Gauntlets+
+0154 - Silver Gauntlets+
+0155 - Training Gauntlets+
+0156 - Levin Sword+
+0157 - Bolt Axe+
+0158 - Magic Bow+
+0159 - Javelin+
+0160 - Short Spear+
+0161 - Spear+
+0162 - Hand Axe+
+0163 - Short Axe+
+0164 - Tomahawk+
+0165 - Longbow+
+0166 - Mini Bow+
+0167 - Armorslayer+
+0168 - Rapier+
+0169 - Horseslayer+
+0170 - Hammer+
+0171 - Blessed Lance+
+0172 - Blessed Bow+
+0173 - Devil Sword+
+0174 - Devil Axe+
+0175 - Wo Dao+
+0176 - Crescent Sickle+
+0177 - Cursed Ashiya Sword+
+0178 - Sword of Zoltan+
+0179 - Lance of Zoltan+
+0180 - Arrow of Indra+
+0181 - Axe of Zoltan+
+0182 - Bow of Zoltan+
+0183 - Dragon Claws+
+0184 - Mace+
+0185 - Venin Edge+
+0186 - Venin Lance+
+0187 - Venin Axe+
+0188 - Venin Bow+
+0189 - Killer Knuckles+
+0190 - Aura Knuckles+
+0191 - Sublime Creator Sword
+0192 - Dark Thunderbrand
+0193 - Dark Blutgang
+0194 - Dark Lance of Ruin
+0195 - Areadbhar Γ
+0196 - Lúin Δ
+0197 - Freikugel Λ
+0198 - Dark Crusher
+0199 - Failnaught Τ
+0200 - Vajra-Mushti
+0201 - 
+0202 - 
+0203 - 
+0204 - 
+0205 - 
+0206 - 
+0207 - 
+0208 - 
+0209 - 
+0210 - Crest Stone (Gautier)
+0211 - Crest Stone (Beast)
+0212 - Cracked Crest Stone
+0213 - Crest Stone Shard
+0214 - Artificial Crest Stone S
+0215 - Artificial Crest Stone L
+0216 - Giant Art. Crest Stone
+0217 - Pointy Art. Crest Stone
+0218 - Lance of Light
+0219 - Lance of Light+
+0220 - Giant Katar
+0221 - Blest Crest Stone Shard
+0222 - Crest Stone of Seiros
+0223 - Crest Stone of Seiros
+0224 - Real Seiros Crest Stone
+0225 - Crest Stone of Macuil
+0226 - Crest Stone of Indech
+0227 - Dark Stone (Bird)
+0228 - Dark Stone (Crawler)
+0229 - Dark Stone (Wolf)
+0230 - Crest of Flames Power
+0231 - Twin-Crest Power
+0232 - Piercing Light Lance
+0233 - Throwing Light Lance
+0234 - Sharp Wings
+0235 - Lost Crest Stone
+0236 - Lost Crest Stone (Lg)
+0237 - Crest of Flames Power
+0238 - Crest of Flames Power
+0239 - Chalice of Blood
+0240 - Crest Stone (Chevalier)
+0241 - 
+0242 - 
+0243 - 
+0244 - 
+0245 - 
+0246 - 
+0247 - 
+0248 - 
+0249 - 
+0250 - 
+0251 - 
+0252 - 
+0253 - 
+0254 - 
+0255 - 
+0256 - 
+0257 - 
+0258 - 
+0259 - 
+0260 - 
+0261 - 
+0262 - 
+0263 - 
+0264 - 
+0265 - 
+0266 - 
+0267 - 
+0268 - 
+0269 - 
+0270 - 
+0271 - 
+0272 - 
+0273 - 
+0274 - 
+0275 - 
+0276 - 
+0277 - 
+0278 - 
+0279 - 
+0280 - 
+0281 - 
+0282 - 
+0283 - 
+0284 - 
+0285 - 
+0286 - 
+0287 - 
+0288 - 
+0289 - 
+0290 - 
+0291 - 
+0292 - 
+0293 - 
+0294 - 
+0295 - 
+0296 - 
+0297 - 
+0298 - 
+0299 - 
+0300 - 
+0301 - 
+0302 - 
+0303 - 
+0304 - 
+0305 - 
+0306 - 
+0307 - 
+0308 - 
+0309 - 
+0310 - Viskam
+0311 - 
+0312 - 
+0313 - 
+0314 - 
+0315 - 
+0316 - 
+0317 - 
+0318 - 
+0319 - 
+0320 - 
+0321 - 
+0322 - 
+0323 - 
+0324 - 
+0325 - 
+0326 - 
+0327 - 
+0328 - 
+0329 - 
+0330 - 
+0331 - 
+0332 - 
+0333 - 
+0334 - 
+0335 - 
+0336 - 
+0337 - 
+0338 - 
+0339 - 
+0340 - 
+0341 - 
+0342 - 
+0343 - 
+0344 - 
+0345 - 
+0346 - 
+0347 - 
+0348 - 
+0349 - 
+0350 - 
+0351 - 
+0352 - 
+0353 - 
+0354 - 
+0355 - 
+0356 - 
+0357 - 
+0358 - 
+0359 - 
+0360 - 
+0361 - 
+0362 - 
+0363 - 
+0364 - 
+0365 - 
+0366 - 
+0367 - 
+0368 - 
+0369 - 
+0370 - 
+0371 - 
+0372 - 
+0373 - 
+0374 - 
+0375 - 
+0376 - 
+0377 - 
+0378 - 
+0379 - 
+0380 - 
+0381 - 
+0382 - 
+0383 - 
+0384 - 
+0385 - 
+0386 - 
+0387 - 
+0388 - 
+0389 - 
+0390 - 
+0391 - 
+0392 - 
+0393 - 
+0394 - 
+0395 - 
+0396 - 
+0397 - 
+0398 - 
+0399 - 
+0400 - 
+0401 - 
+0402 - 
+0403 - 
+0404 - 
+0405 - 
+0406 - 
+0407 - 
+0408 - 
+0409 - 
+0410 - 
+0411 - 
+0412 - 
+0413 - 
+0414 - 
+0415 - 
+0416 - 
+0417 - 
+0418 - 
+0419 - 
+0420 - 
+0421 - 
+0422 - 
+0423 - 
+0424 - 
+0425 - 
+0426 - 
+0427 - 
+0428 - 
+0429 - 
+0430 - 
+0431 - 
+0432 - 
+0433 - 
+0434 - 
+0435 - 
+0436 - 
+0437 - 
+0438 - 
+0439 - 
+0440 - 
+0441 - 
+0442 - 
+0443 - 
+0444 - 
+0445 - 
+0446 - 
+0447 - 
+0448 - 
+0449 - 
+0450 - 
+0451 - 
+0452 - 
+0453 - 
+0454 - 
+0455 - 
+0456 - 
+0457 - 
+0458 - 
+0459 - 
+0460 - 
+0461 - 
+0462 - 
+0463 - 
+0464 - 
+0465 - 
+0466 - 
+0467 - 
+0468 - 
+0469 - 
+0470 - 
+0471 - 
+0472 - 
+0473 - 
+0474 - 
+0475 - 
+0476 - 
+0477 - 
+0478 - 
+0479 - 
+0480 - 
+0481 - 
+0482 - 
+0483 - 
+0484 - 
+0485 - 
+0486 - 
+0487 - 
+0488 - 
+0489 - 
+0490 - 
+0491 - 
+0492 - 
+0493 - 
+0494 - 
+0495 - 
+0496 - 
+0497 - 
+0498 - 
+0499 - 
+0500 - 
+0501 - 
+0502 - 
+0503 - 
+0504 - 
+0505 - 
+0506 - 
+0507 - 
+0508 - 
+0509 - 
+0600 - Leather Shield
+0601 - Iron Shield
+0602 - Steel Shield
+0603 - Silver Shield
+0604 - Talisman Shield
+0605 - Hexlock Shield
+0606 - Aegis Shield
+0607 - Ochain Shield
+0608 - Seiros Shield
+0609 - Aurora Shield
+0610 - Kadmos Shield
+0611 - Lampos Shield
+0612 - Accuracy Ring
+0613 - Critical Ring
+0614 - Evasion Ring
+0615 - Speed Ring
+0616 - March Ring
+0617 - Goddess Ring
+0618 - Prayer Ring
+0619 - Magic Staff
+0620 - Healing Staff
+0621 - Caduceus Staff
+0622 - Thyrsus
+0623 - Rafail Gem
+0624 - Experience Gem
+0625 - Knowledge Gem
+0626 - Circe Staff
+0627 - Tomas's Staff
+0628 - Armored Soldier Shield
+0629 - Armored Knight Shield
+0630 - Fortress Soldier Shield
+0631 - Asclepius
+0632 - Dark Aegis Shield
+0633 - Dark Thyrsus
+0634 - Dark Rafail Gem
+0635 - Flame Shield
+0636 - Emperor Shield
+0637 - Black Eagle Pendant
+0638 - Blue Lion Brooch
+0639 - Golden Deer Bracelet
+0640 - White Dragon Scarf
+0641 - Chalice of Beginnings
+0642 - Fetters of Dromi
+0643 - Item 43
+0644 - Item 44
+0645 - Item 45
+0646 - Item 46
+0647 - Item 47
+0648 - Item 48
+0649 - Item 49
+1000 - Vulnerary
+1001 - Concoction
+1002 - Elixir
+1003 - Intermediate Seal
+1004 - Advanced Seal
+1005 - Combined Seal
+1006 - Master Seal
+1007 - Torch
+1008 - Bullion
+1009 - Large Bullion
+1010 - Extra Large Bullion
+1011 - Antitoxin
+1012 - Pure Water
+1013 - Door Key
+1014 - Chest Key
+1015 - Master Key
+1016 - Seraph Robe
+1017 - Energy Drop
+1018 - Spirit Dust
+1019 - Secret Book
+1020 - Speedwing
+1021 - Goddess Icon
+1022 - Giant Shell
+1023 - Talisman
+1024 - Black Pearl
+1025 - Shoes of the Wind
+1026 - Grilled Duck
+1027 - Fried Boar
+1028 - Magical Herb Salad
+1029 - Dried Plums
+1030 - Pike Casserole
+1031 - Bear & Vegetable Soup
+1032 - Fried Gar
+1033 - Fried Queen Koi
+1034 - Sculpin Gratin
+1035 - Grilled Wolverine & Herbs
+1036 - Grilled Duck +
+1037 - Fried Boar +
+1038 - Magical Herb Salad +
+1039 - Dried Plums +
+1040 - Pike Casserole +
+1041 - Bear & Vegetable Soup +
+1042 - Fried Gar +
+1043 - Fried Queen Koi +
+1044 - Sculpin Gratin +
+1045 - Grilled Wolverine & Herbs +
+1046 - Albinea Juice
+1047 - Grilled Chicken & Herbs
+1048 - Roast Duck
+1049 - Grilled Chicken & Herbs +
+1050 - Roast Duck +
+1051 - Sacred Galewind Shoes
+1052 - Sacred Floral Robe
+1053 - Sacred Snowmelt Drop
+1054 - Sacred Moonstone
+1055 - 0
+1056 - 0
+1057 - 0
+1058 - 0
+1059 - 0
+1060 - 0
+1061 - 0
+1062 - 0
+1063 - 0
+1064 - 0
+1065 - 0
+1066 - 0
+1067 - 0
+1068 - 0
+1069 - 0
+1070 - 0
+1071 - 0
+1072 - 0
+1073 - 0
+1074 - 0
+1075 - 0
+1076 - 0
+1077 - 0
+1078 - 0
+1079 - 0
+1080 - 0
+1081 - 0
+1082 - 0
+1083 - 0
+1084 - 0
+1085 - 0
+1086 - 0
+1087 - 0
+1088 - 0
+1089 - Dish 63
+1090 - Dish 64
+1091 - Dish 65
+1092 - Dish 66
+1093 - Dish 67
+1094 - Dish 68
+1095 - Dish 69
+1096 - Dish 70
+1097 - Dish 71
+1098 - Dish 72
+1099 - Dish 73
+1100 - Dish 74
+1101 - Dish 75
+1102 - Dish 76
+1103 - Dish 77
+1104 - Dish 78
+1105 - Dish 79
+1106 - Dish 80
+1107 - Dish 81
+1108 - Dish 82
+1109 - Dish 83
+1110 - Dish 84
+1111 - Dish 85
+1112 - Dish 86
+1113 - Dish 87
+1114 - Dish 88
+1115 - Dish 89
+1116 - Dish 90
+1117 - Dish 91
+1118 - Dish 92
+1119 - Dish 93
+1120 - Dish 94
+1121 - Dish 95
+1122 - Dish 96
+1123 - Dish 97
+1124 - Dish 98
+1125 - Dish 99
+1126 - Thorn Dragon Sign
+1127 - Wind Dragon Sign
+1128 - Sky Dragon Sign
+1129 - Crusher Dragon Sign
+1130 - Shield Dragon Sign
+1131 - Bloom Dragon Sign
+1132 - Light Dragon Sign
+1133 - Flame Dragon Sign
+1134 - Grim Dragon Sign
+1135 - Craft Dragon Sign
+1136 - Kalpa Dragon Sign
+1137 - Earth Dragon Sign
+1138 - Ice Dragon Sign
+1139 - Fissure Dragon Sign
+1140 - Water Dragon Sign
+1141 - Storm Dragon Sign
+1142 - Lightning Dragon Sign
+1143 - Dark Dragon Sign
+1144 - Star Dragon Sign
+1145 - Snow Dragon Sign
+1146 - Aegis Dragon Sign
+1147 - Crest Stone
+1148 - Rocky Burdock
+1149 - Premium Magic Herbs
+1150 - Ailell Pomegranate
+1151 - Speed Carrot
+1152 - Miracle Bean
+1153 - Ambrosia
+1154 - White Verona
+1155 - Golden Apple
+1156 - Fruit of Life
+1157 - Dark Seal
+1158 - Beginner Seal
+1159 - Abyssian Exam Pass
+1160 - Spellbreak Key
+1161 - Trade Secret
+1162 - Spare slot 15
+1163 - Spare slot 16
+1164 - Spare slot 17
+1165 - Spare slot 18
+1166 - Spare slot 19
+1167 - Spare slot 20
+1168 - Spare slot 21
+1169 - Spare slot 22
+1170 - Spare slot 23
+1171 - Spare slot 24
+1172 - Spare slot 25
+1173 - Spare slot 26
+1174 - Spare slot 27
+1175 - Spare slot 28
+1176 - Spare slot 29
+1177 - Spare slot 30
+1178 - Spare slot 31
+1179 - Spare slot 32
+1180 - Spare slot 33
+1181 - Spare slot 34
+1182 - Spare slot 35
+1183 - Spare slot 36
+1184 - Spare slot 37
+1185 - Spare slot 38
+1186 - Spare slot 39
+1187 - Spare slot 40
+1188 - Spare slot 41
+1189 - Spare slot 42
+1190 - Spare slot 43
+1191 - Spare slot 44
+1192 - Spare slot 45
+1193 - Spare slot 46
+1194 - Spare slot 47
+1195 - Spare slot 48
+1196 - Spare slot 49
+1197 - Spare slot 50
+1198 - Spare slot 51
+1199 - Spare slot 52
+4000 - Fire
+4001 - Bolganone
+4002 - Ragnarok
+4003 - Thunder
+4004 - Thoron
+4005 - Bolting
+4006 - Wind
+4007 - Cutting Gale
+4008 - Excalibur
+4009 - Blizzard
+4010 - Fimbulvetr
+4011 - Sagittae
+4012 - Meteor
+4013 - Agnea's Arrow
+4014 - Miasma Δ
+4015 - Mire Β
+4016 - Swarm Ζ
+4017 - Banshee Θ
+4018 - Death Γ
+4019 - Luna Λ
+4020 - Dark Spikes Τ
+4021 - Hades Ω
+4022 - Bohr Χ
+4023 - Quake Σ
+4024 - Heal
+4025 - Recover
+4026 - Physic
+4027 - Fortify
+4028 - Nosferatu
+4029 - Seraphim
+4030 - Aura
+4031 - Abraxas
+4032 - Torch
+4033 - Restore
+4034 - Ward
+4035 - Silence
+4036 - Rescue
+4037 - Warp
+5000 - Onager
+5001 - Ballista
+5002 - Fire Orb
+6000 - Onslaught
+6001 - Assembly
+6002 - Reversal
+6003 - Lure
+6004 - Disturbance
+6005 - Blaze
+6006 - Fusillade
+6007 - Assault Troop
+6008 - Absorption
+6009 - Poisoned Arrows
+6010 - Resonant Flames
+6011 - Resonant Ice
+6012 - Resonant Lightning
+6013 - Resonant White Magic
+6014 - Flash-Fire Arrows
+6015 - Group Lance Attack
+6016 - Linked Horses
+6017 - Poison Tactic
+6018 - Bag of Tricks
+6019 - Recovery Roar
+6020 - Spare
+6021 - Impregnable Wall
+6022 - Sacred Shield
+6023 - Spare
+6024 - Retribution
+6025 - Stride
+6026 - Blessing
+6027 - Dance of the Goddess
+6028 - Ashes and Dust
+6029 - Raging Flames
+6030 - Wave Attack
+6031 - Line of Lances
+6032 - Group Flames
+6033 - Group Ice
+6034 - Group Lightning
+6035 - Mad Melee
+6036 - Random Shot
+6037 - Absolute Defense
+6038 - Battleground Café
+6039 - Battleground Clean Up
+6040 - 
+6041 - 
+6042 - 
+6043 - 
+6044 - 
+6045 - 
+6046 - 
+6047 - 
+6048 - 
+6049 - 
+6050 - 
+6051 - 
+6052 - 
+6053 - 
+6054 - 
+6055 - 
+6056 - 
+6057 - 
+6058 - 
+6059 - 
+6060 - 
+6061 - 
+6062 - 
+6063 - 
+6064 - 
+6065 - 
+6066 - 
+6067 - 
+6068 - 
+6069 - 
+6070 - 
+6071 - 
+6072 - 
+6073 - 
+6074 - 
+6075 - 
+6076 - 
+6077 - 
+6078 - 
+6079 - 
+7000 - Thorns of Ruin
+7001 - Heavy Strike
+7002 - Poison Breath
+7003 - Flame Breath
+7004 - Brimstone Breath
+7005 - Arm Press
+7006 - Annihilation
+7007 - Light-Lance Barrage
+7008 - Titanomachy
+7009 - Light Breath
+7010 - Aurora Breath
+7011 - Hoarfrost
+7012 - Gale
+7013 - Rapids
+7014 - Sky Fissure
+7015 - Sandstorm
+7016 - Cyclone
+7017 - Wilted Flower
+7018 - Umbral Surge
+7019 - 
+7020 - 
+7021 - 
+7022 - 
+7023 - 
+7024 - 
+7025 - 
+7026 - 
+7027 - 
+7028 - 
+7029 - 
+7030 - 
+7031 - 
+7032 - 
+7033 - 
+7034 - 
+7035 - 
+7036 - 
+7037 - 
+7038 - 
+7039 - 
+7040 - 
+7041 - 
+7042 - 
+7043 - 
+7044 - 
+7045 - 
+7046 - 
+7047 - 
+7048 - 
+7049 - 
+7050 - 
+7051 - 
+7052 - 
+7053 - 
+7054 - 
+7055 - 
+7056 - 
+7057 - 
+7058 - 
+7059 - 
