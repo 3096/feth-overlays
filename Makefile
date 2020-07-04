@@ -37,7 +37,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #   of a homebrew executable (.nro). This is intended to be used for sysmodules.
 #   NACP building is skipped as well.
 #---------------------------------------------------------------------------------
-APP_TITLE	:=	FETH Item Max
+APP_TITLE	:=	FETH Item Trainer
 APP_VERSION :=	0.1.0
 
 TARGET		:=	$(notdir $(CURDIR))

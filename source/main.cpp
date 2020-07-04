@@ -67,21 +67,23 @@ namespace feth {
 static const auto TARGET_BID = BuildId{0x89, 0x4,  0x84, 0x49, 0xba, 0x23, 0x8c, 0x8c, 0xf5, 0x65,
                                        0x51, 0x8b, 0x83, 0xbf, 0x2,  0xd3, 0x0,  0x0,  0x0,  0x0};
 
+using ItemId = uint16_t;
+using ItemDurability = uint8_t;
+using ItemAmount = uint8_t;
 struct Item {
-    uint16_t id;
-    uint8_t durability;
-    uint8_t amount;
+    ItemId id;
+    ItemDurability durability;
+    ItemAmount amount;
 };
-static constexpr auto MAX_ITEM_ID = uint16_t{0xFFFF};
-static constexpr auto MAX_ITEM_DURABILITY = uint8_t{255};
-static constexpr auto MAX_ITEM_AMOUNT = uint8_t{99};
+static constexpr auto MAX_ITEM_ID = ItemId{0xFFFF};
+static constexpr auto MAX_ITEM_DURABILITY = ItemDurability{100};
+static constexpr auto MAX_ITEM_AMOUNT = ItemAmount{99};
 static constexpr auto TOTAL_ITEM_COUNT = 400;
 static constexpr auto ITEM_OFFSET = 0x01B121A0;
 static constexpr auto ITEM_COUNT_OFFSET = ITEM_OFFSET + sizeof(Item) * TOTAL_ITEM_COUNT;
 using ItemArray = std::array<Item, TOTAL_ITEM_COUNT>;
-using ItemIdSet = std::set<uint16_t>;
 
-static const auto RECOVERY_ID_SET = ItemIdSet{
+static const auto RECOVERY_ID_SET = std::set<ItemId>{
     1000,  // Vulnerary
     1001,  // Concoction
     1002,  // Elixir
@@ -89,7 +91,7 @@ static const auto RECOVERY_ID_SET = ItemIdSet{
     1012,  // Pure Water
 };
 
-static const auto SEAL_ID_SET = ItemIdSet{
+static const auto SEAL_ID_SET = std::set<ItemId>{
     1003,  // intermediate
     1004,  // advanced
     // 1005,  // combined
@@ -98,19 +100,19 @@ static const auto SEAL_ID_SET = ItemIdSet{
     1158,  // beginner
     1159   // abyssian
 };
-static const auto KEY_ID_SET = ItemIdSet{
+static const auto KEY_ID_SET = std::set<ItemId>{
     1013,  // Door Key
     1014,  // Chest Key
     1015,  // Master Key
 };
 
-static const auto GOLD_ID_SET = ItemIdSet{
+static const auto GOLD_ID_SET = std::set<ItemId>{
     1008,  // Bullion
     1009,  // Large Bullion
     1010,  // Extra Large Bullion
 };
 
-static const auto STAT_UP_ID_SET = ItemIdSet{
+static const auto STAT_UP_ID_SET = std::set<ItemId>{
     1016,  // Seraph Robe
     1017,  // Energy Drop
     1018,  // Spirit Dust
@@ -136,25 +138,26 @@ static const auto STAT_UP_ID_SET = ItemIdSet{
     1156,  // Fruit of Life
 };
 
-static const auto QUEST_ID_SET = ItemIdSet{
+static const auto QUEST_ID_SET = std::set<ItemId>{
     1161,  // Trade Secret
 };
 
 struct MenuListEntry {
     std::string name;
-    ItemIdSet itemIdSet;
+    std::set<ItemId> itemIdSet;
 };
 
 static const auto MENU_ENTRY_LIST = std::list<MenuListEntry>{
-    {"Potions x", RECOVERY_ID_SET}, {"Exam Seals x", SEAL_ID_SET},       {"Keys x", KEY_ID_SET},
-    {"Gold Bars x", GOLD_ID_SET},   {"Stat Boosters x", STAT_UP_ID_SET}, {"Anna Quest Item x", QUEST_ID_SET},
+    {"Potions", RECOVERY_ID_SET}, {"Exam Seals", SEAL_ID_SET},       {"Keys", KEY_ID_SET},
+    {"Gold Bars", GOLD_ID_SET},   {"Stat Boosters", STAT_UP_ID_SET}, {"Anna Quest Item", QUEST_ID_SET},
 };
 
 // game state
 
 static DmntCheatProcessMetadata s_processMetadata = {};
 
-void setItemsAmountWithFilter(const ItemIdSet* itemIdSet, uint8_t amountToSet, bool shouldAdd) {
+void setItemsWithIdSet(const std::set<ItemId>* p_itemIdSet, const ItemDurability* p_durabilityToSet,
+                       const ItemAmount* p_amountToSet, const bool shouldAdd) {
     // update process meta
     auto hasCheatProcess = false;
     TRY_THROW(dmntchtHasCheatProcess(&hasCheatProcess));
@@ -179,9 +182,9 @@ void setItemsAmountWithFilter(const ItemIdSet* itemIdSet, uint8_t amountToSet, b
                                             &curItemCount, sizeof(curItemCount)));
 
     // make a map to keep track which item was found
-    auto foundItemMap = std::map<uint16_t, bool>{};
-    if (itemIdSet) {
-        for (auto& itemId : *itemIdSet) {
+    auto foundItemMap = std::map<ItemId, bool>{};
+    if (p_itemIdSet) {
+        for (auto& itemId : *p_itemIdSet) {
             foundItemMap[itemId] = false;
         }
     }
@@ -189,14 +192,16 @@ void setItemsAmountWithFilter(const ItemIdSet* itemIdSet, uint8_t amountToSet, b
     // search and set existing items
     auto curItemIdx = 0;
     for (auto& item : items) {
-        if (itemIdSet) {
-            auto itemEntryInFoundMap = foundItemMap.find(item.id);
-            if (itemEntryInFoundMap != end(foundItemMap)) {
-                item.amount = amountToSet;
-                itemEntryInFoundMap->second = true;
-            }
-        } else {
-            item.amount = amountToSet;
+        auto itemEntryInFoundMap = foundItemMap.find(item.id);
+        auto itemIsFound = itemEntryInFoundMap != end(foundItemMap);
+
+        if (itemIsFound) {
+            itemEntryInFoundMap->second = true;
+        }
+
+        if (not p_itemIdSet or itemIsFound) {
+            if (p_durabilityToSet) item.durability = *p_durabilityToSet;
+            if (p_amountToSet) item.amount = *p_amountToSet;
         }
 
         curItemIdx++;
@@ -204,7 +209,7 @@ void setItemsAmountWithFilter(const ItemIdSet* itemIdSet, uint8_t amountToSet, b
     }
 
     // take care of adding items if necessary
-    if (itemIdSet and shouldAdd) {
+    if (p_itemIdSet and shouldAdd) {
         for (auto& foundItemMapEntry : foundItemMap) {
             auto itemId = foundItemMapEntry.first;
             auto itemWasFound = foundItemMapEntry.second;
@@ -214,7 +219,9 @@ void setItemsAmountWithFilter(const ItemIdSet* itemIdSet, uint8_t amountToSet, b
             }
 
             if (not itemWasFound) {
-                items[curItemCount] = {itemId, MAX_ITEM_DURABILITY, amountToSet};
+                auto durabilityToSet = p_durabilityToSet ? *p_durabilityToSet : MAX_ITEM_DURABILITY;
+                auto amountToSet = p_amountToSet ? *p_amountToSet : ItemAmount{1};
+                items[curItemCount] = {itemId, durabilityToSet, amountToSet};
                 curItemCount++;
             }
         }
@@ -232,6 +239,8 @@ class AddGui;
 
 class MainGui : public tsl::Gui {
    private:
+    bool m_maxDurability = false;
+    bool m_maxAmount = true;
     bool m_addIfNotPresent = false;
 
    public:
@@ -242,15 +251,15 @@ class MainGui : public tsl::Gui {
     virtual tsl::elm::Element* createUI() override {
         // A OverlayFrame is the base element every overlay consists of. This will draw the default Title and Subtitle.
         // If you need more information in the header or want to change it's look, use a HeaderOverlayFrame.
-        auto frame = new tsl::elm::OverlayFrame("FETH Item Max", "by 3096");
+        auto frame = new tsl::elm::OverlayFrame("FETH Item Trainer", "by 3096 & Jacien");
 
         // A list that can contain sub elements and handles scrolling
         auto list = new tsl::elm::List();
 
         // Select ID
-        list->addItem(new tsl::elm::CategoryHeader("Select Specific Item ID"));
+        list->addItem(new tsl::elm::CategoryHeader("Select Specific Item to Edit"));
 
-        auto* p_addListItem = new tsl::elm::ListItem("Set Item by ID");
+        auto* p_addListItem = new tsl::elm::ListItem("Set Specific Item");
         p_addListItem->setClickListener([this](s64 key) {
             if (key & KEY_A) {
                 tsl::changeTo<AddGui>();
@@ -262,19 +271,32 @@ class MainGui : public tsl::Gui {
         list->addItem(p_addListItem);
 
         // Categorized Item
-        list->addItem(new tsl::elm::CategoryHeader("Use Predefined Categories", true));
+        list->addItem(new tsl::elm::CategoryHeader("Quick Edit Multiple Items", true));
 
         auto* p_toggleAddListItem =
             new tsl::elm::ToggleListItem("Items to Edit", m_addIfNotPresent, "Add ALL", "Only Owned");
-        p_toggleAddListItem->setStateChangedListener([this](bool enabled) { m_addIfNotPresent = enabled; });
+        p_toggleAddListItem->setStateChangedListener([this](bool toggleState) { m_addIfNotPresent = toggleState; });
         list->addItem(p_toggleAddListItem);
 
+        auto* p_toggleMaxDurabilityListItem = new tsl::elm::ToggleListItem(
+            "Durability --> " + std::to_string(feth::MAX_ITEM_DURABILITY), m_maxDurability);
+        p_toggleMaxDurabilityListItem->setStateChangedListener(
+            [this](bool toggleState) { m_maxDurability = toggleState; });
+        list->addItem(p_toggleMaxDurabilityListItem);
+
+        auto* p_toggleMaxAmountListItem =
+            new tsl::elm::ToggleListItem("Amount --> " + std::to_string(feth::MAX_ITEM_AMOUNT), m_maxAmount);
+        p_toggleMaxAmountListItem->setStateChangedListener([this](bool toggleState) { m_maxAmount = toggleState; });
+        list->addItem(p_toggleMaxAmountListItem);
+
         for (auto& menuEntry : feth::MENU_ENTRY_LIST) {
-            auto* p_sealListItem = new tsl::elm::ListItem(menuEntry.name + std::to_string(feth::MAX_ITEM_AMOUNT));
+            auto* p_sealListItem = new tsl::elm::ListItem(menuEntry.name);
             auto& itemIdSet = menuEntry.itemIdSet;
             p_sealListItem->setClickListener([this, itemIdSet](s64 key) {
                 if (key & KEY_A) {
-                    feth::setItemsAmountWithFilter(&itemIdSet, feth::MAX_ITEM_AMOUNT, m_addIfNotPresent);
+                    auto p_durabilityToSet = m_maxDurability ? &feth::MAX_ITEM_DURABILITY : nullptr;
+                    auto p_amountToSet = m_maxAmount ? &feth::MAX_ITEM_AMOUNT : nullptr;
+                    feth::setItemsWithIdSet(&itemIdSet, p_durabilityToSet, p_amountToSet, m_addIfNotPresent);
                     return true;
                 }
                 return false;
@@ -282,13 +304,13 @@ class MainGui : public tsl::Gui {
             list->addItem(p_sealListItem);
         }
 
-        // All Items
-        list->addItem(new tsl::elm::CategoryHeader("Apply to All Owned Items", true));
-
-        auto* p_allListItem = new tsl::elm::ListItem("Owned Items x" + std::to_string(feth::MAX_ITEM_AMOUNT));
+        // Owned Items
+        auto* p_allListItem = new tsl::elm::ListItem("Owned Items");
         p_allListItem->setClickListener([this](s64 key) {
             if (key & KEY_A) {
-                feth::setItemsAmountWithFilter(nullptr, feth::MAX_ITEM_AMOUNT, false);
+                auto p_durabilityToSet = m_maxDurability ? &feth::MAX_ITEM_DURABILITY : nullptr;
+                auto p_amountToSet = m_maxAmount ? &feth::MAX_ITEM_AMOUNT : nullptr;
+                feth::setItemsWithIdSet(nullptr, p_durabilityToSet, p_amountToSet, false);
                 return true;
             }
             return false;
@@ -314,42 +336,97 @@ class MainGui : public tsl::Gui {
 
 class AddGui : public tsl::Gui {
    private:
-    static constexpr auto TOTAL_DIGITS = 5;
-    static constexpr auto ID_MAX_VALUE = uint16_t{0xFFFF};
+    using Digits = std::vector<int8_t>;
 
-    std::array<int, TOTAL_DIGITS> m_digits = {0};
-    int m_curHighlightDigit = TOTAL_DIGITS - 1;
+    static constexpr auto MAX_ID_DIGITS = 4;
+    Digits m_idDigits;
+    int m_curIdHighlightDigit = 0;
+    // feth::ItemId m_itemIdValue;
 
-    std::string getCurrentDigitString_() {
-        auto curPrintingDigit = TOTAL_DIGITS - 1;
-        auto resultStr = std::string{};
+    static constexpr auto MAX_DURABILITY_DIGITS = 3;
+    Digits m_durabilityDigits;
+    int m_curDurabilityHighlightDigit = 0;
+    feth::ItemDurability m_itemDurabilityValue;
 
-        while (curPrintingDigit > m_curHighlightDigit) {
-            resultStr += std::to_string(m_digits[curPrintingDigit]);
-            curPrintingDigit--;
+    static constexpr auto MAX_AMOUNT_DIGITS = 2;
+    Digits m_amountDigits;
+    int m_curAmountHighlightDigit = 0;
+    feth::ItemAmount m_itemAmountValue;
+
+    auto updateDigitsWithKey_(Digits& digits, int& curHighlightDigit, u64 key) -> bool {
+        auto changed = false;
+
+        if (key & KEY_X) {
+            digits[curHighlightDigit]++;
+            changed = true;
+        } else if (key & KEY_Y) {
+            digits[curHighlightDigit]--;
+            changed = true;
+        } else if (key & KEY_LEFT) {
+            curHighlightDigit--;
+            changed = true;
+        } else if (key & KEY_RIGHT) {
+            curHighlightDigit++;
+            changed = true;
         }
 
-        resultStr += "[" + std::to_string(m_digits[curPrintingDigit]) + "]";
-        curPrintingDigit--;
+        if (changed) {
+            digits[curHighlightDigit] = (digits[curHighlightDigit] + 10) % 10;
+            curHighlightDigit = (curHighlightDigit + digits.size()) % digits.size();
+        }
 
-        while (curPrintingDigit >= 0) {
-            resultStr += std::to_string(m_digits[curPrintingDigit]);
-            curPrintingDigit--;
+        return changed;
+    }
+
+    std::string getDigitStringWithHighlight_(const Digits& digits, int curHighlightDigit) {
+        auto curPrintingDigit = 0;
+        auto resultStr = std::string{};
+
+        while (curPrintingDigit < curHighlightDigit) {
+            resultStr += std::to_string(digits[curPrintingDigit]);
+            curPrintingDigit++;
+        }
+
+        resultStr += "[" + std::to_string(digits[curPrintingDigit]) + "]";
+        curPrintingDigit++;
+
+        while (static_cast<size_t>(curPrintingDigit) < digits.size()) {
+            resultStr += std::to_string(digits[curPrintingDigit]);
+            curPrintingDigit++;
         }
 
         return resultStr;
     }
 
-    uint16_t getCurId_() {
-        auto result = uint16_t{0};
-        for (auto curDigit = 0; curDigit < TOTAL_DIGITS; curDigit++) {
-            result = result * 10 + m_digits[curDigit];
+    auto getDigitString_(const Digits& digits) -> std::string {
+        auto result = std::string{};
+        for (auto curDigit : digits) {
+            result += std::to_string(curDigit);
         }
         return result;
     }
 
+    auto getDigitValue_(const Digits& digits) -> int {
+        auto result = 0;
+        for (auto curDigit : digits) {
+            result = result * 10 + curDigit;
+        }
+        return result;
+    }
+
+    inline auto getDurabilityPtr_() -> feth::ItemDurability* {
+        m_itemDurabilityValue = getDigitValue_(m_durabilityDigits);
+        return &m_itemDurabilityValue;
+    }
+
+    inline auto getAmountPtr_() -> feth::ItemAmount* {
+        m_itemAmountValue = getDigitValue_(m_amountDigits);
+        return &m_itemAmountValue;
+    }
+
    public:
-    AddGui() {}
+    AddGui()
+        : m_idDigits(MAX_ID_DIGITS), m_durabilityDigits(MAX_DURABILITY_DIGITS), m_amountDigits(MAX_AMOUNT_DIGITS) {}
 
     // Called when this Gui gets loaded to create the UI
     // Allocate all elements on the heap. libtesla will make sure to clean them up when not needed anymore
@@ -362,37 +439,23 @@ class AddGui : public tsl::Gui {
         auto list = new tsl::elm::List();
 
         // Create and add a new list item to the list
-        auto* p_idSelectionListItem = new tsl::elm::ListItem(getCurrentDigitString_());
-        p_idSelectionListItem->setClickListener([this, p_idSelectionListItem](s64 key) {
+        auto* p_idSelectionListItem =
+            new tsl::elm::ListItem(getDigitStringWithHighlight_(m_idDigits, m_curIdHighlightDigit));
+        auto* p_durabilitySelectionListItem = new tsl::elm::ListItem(getDigitString_(m_durabilityDigits));
+        auto* p_amountSelectionListItem = new tsl::elm::ListItem(getDigitString_(m_amountDigits));
+
+        list->addItem(new tsl::elm::CategoryHeader("Item ID", false));
+
+        p_idSelectionListItem->setClickListener([this, p_idSelectionListItem, p_durabilitySelectionListItem](s64 key) {
             if (key & KEY_DOWN) {
-                auto idString = std::string{};
-                for (auto digit : m_digits) {
-                    idString = std::to_string(digit) + idString;
-                }
-                p_idSelectionListItem->setText(idString);
+                p_idSelectionListItem->setText(getDigitString_(m_idDigits));
+                p_durabilitySelectionListItem->setText(
+                    getDigitStringWithHighlight_(m_durabilityDigits, m_curDurabilityHighlightDigit));
                 return true;
             }
 
-            auto changed = false;
-
-            if (key & (KEY_X | KEY_UP)) {
-                m_digits[m_curHighlightDigit]++;
-                changed = true;
-            } else if (key & KEY_Y) {
-                m_digits[m_curHighlightDigit]--;
-                changed = true;
-            } else if (key & KEY_LEFT) {
-                m_curHighlightDigit++;
-                changed = true;
-            } else if (key & KEY_RIGHT) {
-                m_curHighlightDigit--;
-                changed = true;
-            }
-
-            if (changed) {
-                m_digits[m_curHighlightDigit] = (m_digits[m_curHighlightDigit] + 10) % 10;
-                m_curHighlightDigit = (m_curHighlightDigit + TOTAL_DIGITS) % TOTAL_DIGITS;
-                p_idSelectionListItem->setText(getCurrentDigitString_());
+            if (updateDigitsWithKey_(m_idDigits, m_curIdHighlightDigit, key)) {
+                p_idSelectionListItem->setText(getDigitStringWithHighlight_(m_idDigits, m_curIdHighlightDigit));
                 return true;
             }
 
@@ -400,33 +463,79 @@ class AddGui : public tsl::Gui {
         });
         list->addItem(p_idSelectionListItem);
 
-        auto* p_addOneListItem = new tsl::elm::ListItem("Set to x1");
-        p_addOneListItem->setClickListener([this, p_idSelectionListItem](s64 key) {
+        list->addItem(new tsl::elm::CategoryHeader("Item Durability", false));
+
+        p_durabilitySelectionListItem->setClickListener(
+            [this, p_durabilitySelectionListItem, p_idSelectionListItem, p_amountSelectionListItem](s64 key) {
+                if (key & KEY_UP) {
+                    p_durabilitySelectionListItem->setText(getDigitString_(m_durabilityDigits));
+                    p_idSelectionListItem->setText(getDigitStringWithHighlight_(m_idDigits, m_curIdHighlightDigit));
+                    return true;
+                }
+                if (key & KEY_DOWN) {
+                    p_durabilitySelectionListItem->setText(getDigitString_(m_durabilityDigits));
+                    p_amountSelectionListItem->setText(
+                        getDigitStringWithHighlight_(m_amountDigits, m_curAmountHighlightDigit));
+                    return true;
+                }
+
+                if (updateDigitsWithKey_(m_durabilityDigits, m_curDurabilityHighlightDigit, key)) {
+                    p_durabilitySelectionListItem->setText(
+                        getDigitStringWithHighlight_(m_durabilityDigits, m_curDurabilityHighlightDigit));
+                    return true;
+                }
+
+                return false;
+            });
+        list->addItem(p_durabilitySelectionListItem);
+
+        list->addItem(new tsl::elm::CategoryHeader("Item Amount", false));
+
+        p_amountSelectionListItem->setClickListener(
+            [this, p_amountSelectionListItem, p_durabilitySelectionListItem](s64 key) {
+                if (key & KEY_UP) {
+                    p_amountSelectionListItem->setText(getDigitString_(m_amountDigits));
+                    p_durabilitySelectionListItem->setText(
+                        getDigitStringWithHighlight_(m_durabilityDigits, m_curDurabilityHighlightDigit));
+                    return true;
+                }
+                if (key & KEY_DOWN) {
+                    p_amountSelectionListItem->setText(getDigitString_(m_amountDigits));
+                    return true;
+                }
+
+                if (updateDigitsWithKey_(m_amountDigits, m_curAmountHighlightDigit, key)) {
+                    p_amountSelectionListItem->setText(
+                        getDigitStringWithHighlight_(m_amountDigits, m_curAmountHighlightDigit));
+                    return true;
+                }
+
+                return false;
+            });
+        list->addItem(p_amountSelectionListItem);
+
+        list->addItem(new tsl::elm::CategoryHeader("Save Item", false));
+
+        auto* p_setItemListItem = new tsl::elm::ListItem("Confirm");
+        p_setItemListItem->setClickListener([this, p_amountSelectionListItem](s64 key) {
             if (key & KEY_A) {
-                auto curItemIdSet = std::set<uint16_t>{getCurId_()};
-                feth::setItemsAmountWithFilter(&curItemIdSet, 1, true);
+                auto idValue = getDigitValue_(m_idDigits);
+                if (idValue > feth::MAX_ITEM_ID) return false;          // avoid oob ids
+                if (getDigitValue_(m_amountDigits) == 0) return false;  // avoid 0 amount
+
+                auto curItemIdSet = std::set<feth::ItemId>{static_cast<feth::ItemId>(idValue)};
+                feth::setItemsWithIdSet(&curItemIdSet, getDurabilityPtr_(), getAmountPtr_(), true);
                 return true;
             }
 
             if (key & KEY_UP) {
-                p_idSelectionListItem->setText(getCurrentDigitString_());
+                p_amountSelectionListItem->setText(
+                    getDigitStringWithHighlight_(m_amountDigits, m_curAmountHighlightDigit));
             }
 
             return false;
         });
-        list->addItem(p_addOneListItem);
-
-        auto* p_addMaxListItem = new tsl::elm::ListItem("Set to x" + std::to_string(feth::MAX_ITEM_AMOUNT));
-        p_addMaxListItem->setClickListener([this](s64 key) {
-            if (key & KEY_A) {
-                auto curItemIdSet = std::set<uint16_t>{getCurId_()};
-                feth::setItemsAmountWithFilter(&curItemIdSet, feth::MAX_ITEM_AMOUNT, true);
-                return true;
-            }
-
-            return false;
-        });
-        list->addItem(p_addMaxListItem);
+        list->addItem(p_setItemListItem);
 
         // Add the list to the frame for it to be drawn
         frame->setContent(list);
