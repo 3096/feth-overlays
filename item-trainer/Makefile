@@ -40,7 +40,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 APP_TITLE	:=	FETH Item Trainer
 APP_VERSION :=	0.1.0
 
-TARGET		:=	$(notdir $(CURDIR))
+TARGET		:=	feth-item-trainer
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
