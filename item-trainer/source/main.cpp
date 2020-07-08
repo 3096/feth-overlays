@@ -59,7 +59,7 @@ class MainGui : public tsl::Gui {
         p_toggleMaxAmountListItem->setStateChangedListener([this](bool toggleState) { m_maxAmount = toggleState; });
         list->addItem(p_toggleMaxAmountListItem);
 
-        for (auto& menuEntry : feth::MENU_ENTRY_LIST) {
+        for (auto& menuEntry : feth::NAMED_ITEM_ID_SET_LIST) {
             auto* p_sealListItem = new tsl::elm::ListItem(menuEntry.name);
             auto& itemIdSet = menuEntry.itemIdSet;
             p_sealListItem->setClickListener([this, itemIdSet](s64 key) {

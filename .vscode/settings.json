@@ -60,6 +60,7 @@
         "map": "cpp",
         "set": "cpp",
         "iostream": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "bitset": "cpp"
     }
 }
