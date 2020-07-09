@@ -215,9 +215,9 @@ struct NamedClassId {
 };
 
 static const auto UNIQUE_CLASS_ID_LIST = std::list<NamedClassId>{
-    {0, "Noble"},          {1, "Commoner"},    {43, "Dancer"},       {42, "Enlightened One"},
-    {56, "Armored Lord"},  {40, "Emperor"},    {57, "High Lord"},    {44, "Great Lord"},
-    {58, "Wyvern Master"}, {17, "Barbarossa"}, {91, "Death Knight"},
+    {0, "Noble"},         {1, "Commoner"},     {43, "Dancer"},       {42, "Enlightened One"}, {56, "Armored Lord ♀"},
+    {40, "Emperor ♀"},    {57, "High Lord ♂"}, {44, "Great Lord ♂"}, {58, "Wyvern Master ♂"}, {17, "Barbarossa"},
+    {91, "Death Knight"},
 };
 
 static const auto BEGINNER_CLASS_ID_LIST = std::list<NamedClassId>{
@@ -228,33 +228,33 @@ static const auto BEGINNER_CLASS_ID_LIST = std::list<NamedClassId>{
 };
 
 static const auto INTERMEDIATE_CLASS_ID_LIST = std::list<NamedClassId>{
-    {6, "Lord"},    {7, "Mercenary"}, {8, "Thief"}, {9, "Armored Knight"}, {10, "Cavalier"}, {11, "Brigand"},
-    {12, "Archer"}, {13, "Brawler"},  {14, "Mage"}, {15, "Dark Mage"},     {16, "Priest"},   {54, "Pegasus Knight"},
+    {6, "Lord"},    {7, "Mercenary"},  {8, "Thief"}, {9, "Armored Knight"}, {10, "Cavalier"}, {11, "Brigand"},
+    {12, "Archer"}, {13, "Brawler ♂"}, {14, "Mage"}, {15, "Dark Mage ♂"},   {16, "Priest"},   {54, "Pegasus Knight ♀"},
 };
 
 static const auto ADVANCED_CLASS_ID_LIST = std::list<NamedClassId>{
-    {18, "Hero"},     {19, "Swordmaster"},  {20, "Assassin"},    {21, "Fortress Knight"},
-    {22, "Paladin"},  {24, "Wyvern Rider"}, {25, "Warrior"},     {26, "Sniper"},
-    {27, "Grappler"}, {28, "Warlock"},      {29, "Dark Bishop"}, {30, "Bishop"},
+    {18, "Hero ♂"},     {19, "Swordmaster"},  {20, "Assassin"},      {21, "Fortress Knight"},
+    {22, "Paladin"},    {24, "Wyvern Rider"}, {25, "Warrior"},       {26, "Sniper"},
+    {27, "Grappler ♂"}, {28, "Warlock"},      {29, "Dark Bishop ♂"}, {30, "Bishop"},
 };
 
 static const auto SPECIAL_CLASS_ID_LIST = std::list<NamedClassId>{
     {84, "Trickster"},
     {85, "War Monk/Cleric"},
-    {86, "Dark Flier"},
-    {87, "Valkyrie"},
+    {86, "Dark Flier ♀"},
+    {87, "Valkyrie ♀"},
 };
 
 static const auto MASTER_CLASS_ID_LIST = std::list<NamedClassId>{
-    {31, "Falcon Knight"}, {32, "Wyvern Lord"}, {33, "Mortal Savant"}, {34, "Great Knight"}, {35, "Bow Knight"},
-    {36, "Dark Knight"},   {37, "Holy Knight"}, {38, "War Master"},    {39, "Gremory"},
+    {31, "Falcon Knight ♀"}, {32, "Wyvern Lord"}, {33, "Mortal Savant"}, {34, "Great Knight"}, {35, "Bow Knight"},
+    {36, "Dark Knight"},     {37, "Holy Knight"}, {38, "War Master ♂"},  {39, "Gremory ♀"},
 };
 
 static const auto OTHER_CLASS_ID_LIST = std::list<NamedClassId>{
-    {23, "Pegasus Knight"},
-    {41, "Agastya"},
-    {45, "King of Liberation"},
-    {46, "Saint"},
+    {23, "Pegasus Knight ♀"},
+    {41, "Agastya ♂"},
+    {45, "King of Liberation ♂"},
+    {46, "Saint ♀"},
     {47, "Flame Emperor"},
     {48, "Flame Emperor"},
     {49, "Thief"},
@@ -262,35 +262,8 @@ static const auto OTHER_CLASS_ID_LIST = std::list<NamedClassId>{
     {51, "Paladin"},
     {52, "Fortress Knight"},
     {53, "Lord"},
-    {55, "Archbishop"},
-    {59, "Death Knight"},
-    {60, "Black Beast"},
-    {61, "Wandering Beast"},
-    {62, "Wild Demonic Beast"},
-    {63, "Demonic Beast"},
-    {64, "Exp. Demonic Beast"},
-    {65, "Altered Demonic Beast"},
-    {66, "Giant Demonic Beast"},
-    {67, "Flying Demonic Beast"},
-    {68, "Golem"},
-    {69, "Altered Golem"},
-    {70, "Titanus"},
-    {71, "White Beast"},
-    {72, "The Immaculate One"},
-    {73, "The Immaculate One"},
-    {74, "The Immaculate One"},
-    {75, "Lord of the Desert"},
-    {76, "Lord of the Lake"},
-    {77, "Giant Bird"},
-    {78, "Giant Crawler"},
-    {79, "Giant Wolf"},
-    {80, "Hegemon Husk"},
-    {81, "King of Beasts"},
-    {82, "King of Fangs"},
-    {83, "King of Wings"},
-    {88, "Umbral Beast"},
+    {55, "Archbishop ♀"},
     {89, "Verrat"},
-    {92, "Guardian Golem"},
 };
 
 struct NameClassIdList {
@@ -305,7 +278,7 @@ static const auto NAMED_CLASS_ID_LIST_LIST = std::list<NameClassIdList>{
     {"Advanced", ADVANCED_CLASS_ID_LIST},
     {"Special", SPECIAL_CLASS_ID_LIST},
     {"Master", MASTER_CLASS_ID_LIST},
-    {"Other", OTHER_CLASS_ID_LIST},
+    {"Enemy", OTHER_CLASS_ID_LIST},
 };
 
 // units
