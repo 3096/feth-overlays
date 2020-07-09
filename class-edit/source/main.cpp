@@ -1,4 +1,4 @@
-#define NXLINK_DEBUG
+// #define NXLINK_DEBUG
 
 #include "../../common/common.hpp"
 
@@ -17,33 +17,39 @@ class ClassListGui : public tsl::Gui {
     virtual tsl::elm::Element* createUI() override {
         // A OverlayFrame is the base element every overlay consists of. This will draw the default Title and Subtitle.
         // If you need more information in the header or want to change it's look, use a HeaderOverlayFrame.
-        auto frame = new tsl::elm::OverlayFrame("Select Unlocked Classes", "changes are applied instantly");
+        auto p_frame = new tsl::elm::OverlayFrame("Select Unlocked Classes", "changes are applied instantly");
 
         // A list that can contain sub elements and handles scrolling
-        auto list = new tsl::elm::List();
+        auto p_list = new tsl::elm::List();
 
         if (feth::gameIsRunning()) {
             auto curCharacterClassUnlock = feth::getRosterCharacterClassUnlockAtIndex(m_rosterCharacterIndex);
-            auto curClassIndex = 0;
-            for (auto& className : feth::CLASS_NAME_LIST) {
-                auto* p_classToggleListItem =
-                    new tsl::elm::ToggleListItem(className, curCharacterClassUnlock[curClassIndex]);
-                p_classToggleListItem->setStateChangedListener([this, curClassIndex](bool toggleState) {
-                    feth::setClassUnlockAtIndexOfRosterCharacterAtIndex(m_rosterCharacterIndex, curClassIndex,
-                                                                        toggleState);
-                });
-                list->addItem(p_classToggleListItem);
-                curClassIndex++;
+
+            for (auto& classIdListEntry : feth::NAMED_CLASS_ID_LIST_LIST) {
+                p_list->addItem(new tsl::elm::CategoryHeader(classIdListEntry.name, false));
+
+                for (auto& classIdEntry : classIdListEntry.list) {
+                    auto* p_classToggleListItem = new tsl::elm::ToggleListItem(
+                        classIdEntry.name, feth::classIsUnlocked(curCharacterClassUnlock, classIdEntry.id));
+
+                    p_classToggleListItem->setStateChangedListener([this, classIdEntry](bool toggleState) {
+                        feth::setClassUnlockAtIndexOfRosterCharacterAtIndex(m_rosterCharacterIndex, classIdEntry.id,
+                                                                            toggleState);
+                    });
+
+                    p_list->addItem(p_classToggleListItem);
+                }
             }
+
         } else {
-            list->addItem(new tsl::elm::ListItem("Please make sure the game is running"));
+            p_list->addItem(new tsl::elm::ListItem("Please make sure the game is running"));
         }
 
         // Add the list to the frame for it to be drawn
-        frame->setContent(list);
+        p_frame->setContent(p_list);
 
         // Return the frame to have it become the top level element of this Gui
-        return frame;
+        return p_frame;
     }
 };
 
@@ -54,10 +60,10 @@ class MainGui : public tsl::Gui {
     virtual tsl::elm::Element* createUI() override {
         // A OverlayFrame is the base element every overlay consists of. This will draw the default Title and Subtitle.
         // If you need more information in the header or want to change it's look, use a HeaderOverlayFrame.
-        auto frame = new tsl::elm::OverlayFrame("FETH Class Edit", "by 3096 & Jacien");
+        auto p_frame = new tsl::elm::OverlayFrame("FETH Class Edit", "by 3096 & Jacien");
 
         // A list that can contain sub elements and handles scrolling
-        auto list = new tsl::elm::List();
+        auto p_list = new tsl::elm::List();
 
         if (feth::gameIsRunning()) {
             for (auto& rosterEntry : feth::getRosterEntries()) {
@@ -69,17 +75,17 @@ class MainGui : public tsl::Gui {
                     }
                     return false;
                 });
-                list->addItem(p_rosterCharacterListItem);
+                p_list->addItem(p_rosterCharacterListItem);
             }
         } else {
-            list->addItem(new tsl::elm::ListItem("Please make sure the game is running"));
+            p_list->addItem(new tsl::elm::ListItem("Please make sure the game is running"));
         }
 
         // Add the list to the frame for it to be drawn
-        frame->setContent(list);
+        p_frame->setContent(p_list);
 
         // Return the frame to have it become the top level element of this Gui
-        return frame;
+        return p_frame;
     }
 };
 

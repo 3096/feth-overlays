@@ -1,0 +1,93 @@
+﻿ID,Class,Category,Order,PC,Notes
+00,Noble,1-Unique,1,x,
+01,Commoner,1-Unique,2,x,
+43,Dancer*,1-Unique,3,x,
+42,Enlightened One*,1-Unique,4,x,Byleth
+56,Armored Lord*,1-Unique,5,x,Edelgard
+40,Emperor*,1-Unique,6,x,Edelgard
+57,High Lord*,1-Unique,7,x,Dimitri
+44,Great Lord*,1-Unique,8,x,Dimitri
+58,Wyvern Master*,1-Unique,9,x,Claude
+17,Barbarossa*,1-Unique,10,x,Claude
+91,Death Knight*,1-Unique,11,x,Jeritza
+02,Myrmidon,2-Beginner,1,x,
+03,Soldier,2-Beginner,2,x,
+04,Fighter,2-Beginner,3,x,
+05,Monk,2-Beginner,4,x,
+06,Lord,3-Intermediate,1,x,
+07,Mercenary,3-Intermediate,2,x,
+08,Thief,3-Intermediate,3,x,
+09,Armored Knight,3-Intermediate,4,x,
+10,Cavalier,3-Intermediate,5,x,
+11,Brigand,3-Intermediate,6,x,
+12,Archer,3-Intermediate,7,x,
+13,Brawler,3-Intermediate,8,x,Male
+14,Mage,3-Intermediate,9,x,
+15,Dark Mage,3-Intermediate,10,x,Male
+16,Priest,3-Intermediate,11,x,
+54,Pegasus Knight,3-Intermediate,12,x,Female
+18,Hero,4-Advanced,1,x,Male
+19,Swordmaster,4-Advanced,2,x,
+20,Assassin,4-Advanced,3,x,
+21,Fortress Knight,4-Advanced,4,x,
+22,Paladin,4-Advanced,5,x,
+24,Wyvern Rider,4-Advanced,6,x,
+25,Warrior,4-Advanced,7,x,
+26,Sniper,4-Advanced,8,x,
+27,Grappler,4-Advanced,9,x,Male
+28,Warlock,4-Advanced,10,x,
+29,Dark Bishop,4-Advanced,11,x,Male
+30,Bishop,4-Advanced,12,x,
+84,Trickster,5-Special,1,x,
+85,War Monk/Cleric,5-Special,2,x,
+86,Dark Flier,5-Special,3,x,Female
+87,Valkyrie,5-Special,4,x,Female
+31,Falcon Knight,6-Master,1,x,Female
+32,Wyvern Lord,6-Master,2,x,
+33,Mortal Savant,6-Master,3,x,
+34,Great Knight,6-Master,4,x,
+35,Bow Knight,6-Master,5,x,
+36,Dark Knight,6-Master,6,x,
+37,Holy Knight,6-Master,7,x,
+38,War Master,6-Master,8,x,Male
+39,Gremory,6-Master,9,x,Female
+23,Pegasus Knight,Other,,,Advanced Class
+41,Agastya*,Other,,,
+45,King of Liberation*,Other,,,
+46,Saint*,Other,,,
+47,Flame Emperor*,Other,,,
+48,Flame Emperor*,Other,,,
+49,Thief,Other,,,
+50,Ruffian,Other,,,
+51,Paladin,Other,,,
+52,Fortress Knight,Other,,,
+53,Lord,Other,,,
+55,Archbishop*,Other,,,
+59,Death Knight*,Other,,,
+60,Black Beast,Other,,,
+61,Wandering Beast,Other,,,
+62,Wild Demonic Beast,Other,,,
+63,Demonic Beast,Other,,,
+64,Exp. Demonic Beast,Other,,,
+65,Altered Demonic Beast,Other,,,
+66,Giant Demonic Beast,Other,,,
+67,Flying Demonic Beast,Other,,,
+68,Golem,Other,,,
+69,Altered Golem,Other,,,
+70,Titanus,Other,,,
+71,White Beast,Other,,,
+72,The Immaculate One,Other,,,
+73,The Immaculate One,Other,,,
+74,The Immaculate One,Other,,,
+75,Lord of the Desert,Other,,,
+76,Lord of the Lake,Other,,,
+77,Giant Bird,Other,,,
+78,Giant Crawler,Other,,,
+79,Giant Wolf,Other,,,
+80,Hegemon Husk,Other,,,
+81,King of Beasts,Other,,,
+82,King of Fangs,Other,,,
+83,King of Wings,Other,,,
+88,Umbral Beast,Other,,,
+89,Verrat,Other,,,
+92,Guardian Golem,Other,,,

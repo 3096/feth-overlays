@@ -1,0 +1,94 @@
+0 Noble
+1 Commoner
+2 Myrmidon
+3 Soldier
+4 Fighter
+5 Monk
+6 Lord
+7 Mercenary
+8 Thief
+9 Armored Knight
+10 Cavalier
+11 Brigand
+12 Archer
+13 Brawler
+14 Mage
+15 Dark Mage
+16 Priest
+17 Barbarossa*
+18 Hero
+19 Swordmaster
+20 Assassin
+21 Fortress Knight
+22 Paladin
+23 Pegasus Knight
+24 Wyvern Rider
+25 Warrior
+26 Sniper
+27 Grappler
+28 Warlock
+29 Dark Bishop
+30 Bishop
+31 Falcon Knight
+32 Wyvern Lord
+33 Mortal Savant
+34 Great Knight
+35 Bow Knight
+36 Dark Knight
+37 Holy Knight
+38 War Master
+39 Gremory
+40 Emperor*
+41 Agastya*
+42 Enlightened One*
+43 Dancer*
+44 Great Lord*
+45 King of Liberation*
+46 Saint*
+47 Flame Emperor*
+48 Flame Emperor*
+49 Thief
+50 Ruffian
+51 Paladin
+52 Fortress Knight
+53 Lord
+54 Pegasus Knight
+55 Archbishop*
+56 Armored Lord*
+57 High Lord*
+58 Wyvern Master*
+59 Death Knight*
+60 Black Beast
+61 Wandering Beast
+62 Wild Demonic Beast
+63 Demonic Beast
+64 Exp. Demonic Beast
+65 Altered Demonic Beast
+66 Giant Demonic Beast
+67 Flying Demonic Beast
+68 Golem
+69 Altered Golem
+70 Titanus
+71 White Beast
+72 The Immaculate One
+73 The Immaculate One
+74 The Immaculate One
+75 Lord of the Desert
+76 Lord of the Lake
+77 Giant Bird
+78 Giant Crawler
+79 Giant Wolf
+80 Hegemon Husk
+81 King of Beasts
+82 King of Fangs
+83 King of Wings
+84 Trickster
+85 War Monk
+86 Dark Flier
+87 Valkyrie
+88 Umbral Beast
+89 Verrat
+90 
+91 Death Knight*
+92 Guardian Golem
+93 
