@@ -130,6 +130,7 @@ using RosterCharacterArray = std::array<Character, ROSTER_CHARACTER_COUNT>;
 
 // support
 using SupportPoint = uint16_t;
+using SupportPair = std::pair<std::string, std::string>;
 
 // offsets
 static constexpr auto ITEM_OFFSET = 0x01B121A0;
@@ -296,7 +297,7 @@ static const auto UNIT_ID_NAME_MAP = std::unordered_map<CharacterId, std::string
 // support
 static constexpr auto SUPPORT_CHARACTER = " x ";
 
-static const auto SUPPORT_LIST = std::list<std::pair<std::string, std::string>>{
+static const auto SUPPORT_LIST = std::list<SupportPair>{
     // clang-format off
     {"Byleth", "Edelgard"}, {"Byleth", "Dimitri"}, {"Byleth", "Claude"}, {"Byleth", "Hubert"}, {"Byleth", "Ferdinand"}, {"Byleth", "Linhardt"}, {"Byleth", "Caspar"}, {"Byleth", "Bernadetta"}, {"Byleth", "Dorothea"}, {"Byleth", "Petra"}, {"Byleth", "Dedue"}, {"Byleth", "Felix"}, {"Byleth", "Ashe"}, {"Byleth", "Sylvain"}, {"Byleth", "Mercedes"}, {"Byleth", "Annette"}, {"Byleth", "Ingrid"}, {"Byleth", "Lorenz"}, {"Byleth", "Raphael"}, {"Byleth", "Ignatz"}, {"Byleth", "Lysithea"}, {"Byleth", "Marianne"}, {"Byleth", "Hilda"}, {"Byleth", "Leonie"}, {"Byleth", "Seteth"}, {"Byleth", "Flayn"}, {"Byleth", "Hanneman"}, {"Byleth", "Manuela"}, {"Byleth", "Gilbert"}, {"Byleth", "Alois"}, {"Byleth", "Catherine"}, {"Byleth", "Shamir"}, {"Byleth", "Cyril"}, {"Byleth", "Rhea"}, {"Byleth", "Sothis"}, {"Edelgard", "Dimitri"}, {"Edelgard", "Claude"}, {"Edelgard", "Hubert"}, {"Edelgard", "Ferdinand"}, {"Edelgard", "Linhardt"}, {"Edelgard", "Caspar"}, {"Edelgard", "Bernadetta"}, {"Edelgard", "Dorothea"}, {"Edelgard", "Petra"}, {"Edelgard", "Hanneman"}, {"Edelgard", "Manuela"}, {"Edelgard", "Lysithea"}, {"Dimitri", "Claude"}, {"Dimitri", "Dedue"}, {"Dimitri", "Felix"}, {"Dimitri", "Ashe"}, {"Dimitri", "Sylvain"}, {"Dimitri", "Mercedes"}, {"Dimitri", "Annette"}, {"Dimitri", "Ingrid"}, {"Dimitri", "Raphael"}, {"Dimitri", "Marianne"}, {"Dimitri", "Flayn"}, {"Dimitri", "Gilbert"}, {"Dimitri", "Alois"}, {"Dimitri", "Catherine"}, {"Claude", "Annette"}, {"Claude", "Ingrid"}, {"Claude", "Petra"}, {"Claude", "Lorenz"}, {"Claude", "Raphael"}, {"Claude", "Ignatz"}, {"Claude", "Lysithea"}, {"Claude", "Marianne"}, {"Claude", "Hilda"}, {"Claude", "Leonie"}, {"Claude", "Flayn"}, {"Claude", "Shamir"}, {"Claude", "Cyril"}, {"Hubert", "Ferdinand"}, {"Hubert", "Linhardt"}, {"Hubert", "Caspar"}, {"Hubert", "Bernadetta"}, {"Hubert", "Dorothea"}, {"Hubert", "Petra"}, {"Hubert", "Hanneman"}, {"Hubert", "Shamir"}, {"Ferdinand", "Mercedes"}, {"Ferdinand", "Linhardt"}, {"Ferdinand", "Caspar"}, {"Ferdinand", "Bernadetta"}, {"Ferdinand", "Dorothea"}, {"Ferdinand", "Petra"}, {"Ferdinand", "Lorenz"}, {"Ferdinand", "Marianne"}, {"Ferdinand", "Hilda"}, {"Ferdinand", "Flayn"}, {"Ferdinand", "Manuela"}, {"Linhardt", "Annette"}, {"Linhardt", "Caspar"}, {"Linhardt", "Bernadetta"}, {"Linhardt", "Dorothea"}, {"Linhardt", "Petra"}, {"Linhardt", "Hanneman"}, {"Linhardt", "Lysithea"}, {"Linhardt", "Marianne"}, {"Linhardt", "Flayn"}, {"Linhardt", "Catherine"}, {"Caspar", "Ashe"}, {"Caspar", "Annette"}, {"Caspar", "Bernadetta"}, {"Caspar", "Dorothea"}, {"Caspar", "Petra"}, {"Caspar", "Raphael"}, {"Caspar", "Hilda"}, {"Caspar", "Catherine"}, {"Caspar", "Shamir"}, {"Bernadetta", "Felix"}, {"Bernadetta", "Sylvain"}, {"Bernadetta", "Ingrid"}, {"Bernadetta", "Dorothea"}, {"Bernadetta", "Petra"}, {"Bernadetta", "Raphael"}, {"Bernadetta", "Leonie"}, {"Bernadetta", "Seteth"}, {"Bernadetta", "Alois"}, {"Dorothea", "Felix"}, {"Dorothea", "Sylvain"}, {"Dorothea", "Ingrid"}, {"Dorothea", "Petra"}, {"Dorothea", "Lorenz"}, {"Dorothea", "Hanneman"}, {"Dorothea", "Manuela"}, {"Petra", "Ashe"}, {"Petra", "Ignatz"}, {"Petra", "Alois"}, {"Petra", "Shamir"}, {"Petra", "Cyril"}, {"Dedue", "Felix"}, {"Dedue", "Ashe"}, {"Dedue", "Sylvain"}, {"Dedue", "Mercedes"}, {"Dedue", "Annette"}, {"Dedue", "Ingrid"}, {"Dedue", "Flayn"}, {"Dedue", "Gilbert"}, {"Dedue", "Shamir"}, {"Felix", "Ashe"}, {"Felix", "Sylvain"}, {"Felix", "Mercedes"}, {"Felix", "Annette"}, {"Felix", "Ingrid"}, {"Felix", "Lysithea"}, {"Felix", "Leonie"}, {"Felix", "Seteth"}, {"Felix", "Flayn"}, {"Ashe", "Sylvain"}, {"Ashe", "Mercedes"}, {"Ashe", "Annette"}, {"Ashe", "Ingrid"}, {"Ashe", "Marianne"}, {"Ashe", "Gilbert"}, {"Ashe", "Catherine"}, {"Ashe", "Cyril"}, {"Sylvain", "Mercedes"}, {"Sylvain", "Annette"}, {"Sylvain", "Ingrid"}, {"Sylvain", "Lorenz"}, {"Sylvain", "Lysithea"}, {"Sylvain", "Marianne"}, {"Sylvain", "Hilda"}, {"Sylvain", "Leonie"}, {"Sylvain", "Flayn"}, {"Sylvain", "Manuela"}, {"Mercedes", "Annette"}, {"Mercedes", "Ingrid"}, {"Mercedes", "Lorenz"}, {"Mercedes", "Ignatz"}, {"Mercedes", "Hilda"}, {"Mercedes", "Alois"}, {"Mercedes", "Cyril"}, {"Annette", "Ingrid"}, {"Annette", "Lysithea"}, {"Annette", "Hilda"}, {"Annette", "Hanneman"}, {"Annette", "Gilbert"}, {"Ingrid", "Raphael"}, {"Ingrid", "Ignatz"}, {"Ingrid", "Seteth"}, {"Ingrid", "Catherine"}, {"Lorenz", "Raphael"}, {"Lorenz", "Ignatz"}, {"Lorenz", "Lysithea"}, {"Lorenz", "Marianne"}, {"Lorenz", "Hilda"}, {"Lorenz", "Leonie"}, {"Lorenz", "Manuela"}, {"Lorenz", "Catherine"}, {"Raphael", "Ignatz"}, {"Raphael", "Lysithea"}, {"Raphael", "Marianne"}, {"Raphael", "Hilda"}, {"Raphael", "Leonie"}, {"Raphael", "Flayn"}, {"Raphael", "Shamir"}, {"Ignatz", "Lysithea"}, {"Ignatz", "Marianne"}, {"Ignatz", "Hilda"}, {"Ignatz", "Leonie"}, {"Ignatz", "Flayn"}, {"Ignatz", "Shamir"}, {"Ignatz", "Cyril"}, {"Lysithea", "Marianne"}, {"Lysithea", "Hilda"}, {"Lysithea", "Leonie"}, {"Lysithea", "Hanneman"}, {"Lysithea", "Catherine"}, {"Lysithea", "Cyril"}, {"Marianne", "Hilda"}, {"Marianne", "Leonie"}, {"Marianne", "Hanneman"}, {"Hilda", "Leonie"}, {"Hilda", "Seteth"}, {"Hilda", "Cyril"}, {"Leonie", "Seteth"}, {"Leonie", "Alois"}, {"Leonie", "Catherine"}, {"Leonie", "Shamir"}, {"Seteth", "Flayn"}, {"Seteth", "Hanneman"}, {"Seteth", "Manuela"}, {"Seteth", "Catherine"}, {"Seteth", "Cyril"}, {"Flayn", "Manuela"}, {"Hanneman", "Manuela"}, {"Hanneman", "Gilbert"}, {"Hanneman", "Alois"}, {"Manuela", "Gilbert"}, {"Manuela", "Alois"}, {"Manuela", "Cyril"}, {"Gilbert", "Alois"}, {"Gilbert", "Catherine"}, {"Alois", "Catherine"}, {"Alois", "Shamir"}, {"Catherine", "Shamir"}, {"Shamir", "Cyril"}, {"Byleth", "Jeritza"}, {"Mercedes", "Jeritza"}, {"Byleth", "Yuri"}, {"Byleth", "Balthus"}, {"Byleth", "Constance"}, {"Byleth", "Hapi"}, {"Bernadetta", "Jeritza"}, {"Constance", "Jeritza"}, {"Yuri", "Balthus"}, {"Yuri", "Constance"}, {"Yuri", "Hapi"}, {"Bernadetta", "Yuri"}, {"Dorothea", "Yuri"}, {"Ingrid", "Yuri"}, {"Balthus", "Constance"}, {"Balthus", "Hapi"}, {"Claude", "Balthus"}, {"Hilda", "Balthus"}, {"Lysithea", "Balthus"}, {"Constance", "Hapi"}, {"Edelgard", "Constance"}, {"Ferdinand", "Constance"}, {"Mercedes", "Constance"}, {"Dimitri", "Hapi"}, {"Ashe", "Hapi"}, {"Linhardt", "Hapi"},
     // clang-format on
@@ -488,7 +489,7 @@ auto classIsUnlocked(const ClassUnlocks& classUnlocksTestedOn, ClassId classId) 
 
 struct SupportEntry {
     size_t index;
-    std::string entryName;
+    const SupportPair* p_pair;
 };
 
 struct SupportList {
@@ -509,23 +510,22 @@ auto getSupportCollection() {
     auto characterSupportListMap = std::unordered_map<std::string, SupportList*>{};
 
     auto index = size_t{0};
-    for (auto& supportTuple : SUPPORT_LIST) {
-        auto curSupportEntry = std::make_shared<SupportEntry>(
-            SupportEntry{index, supportTuple.first + SUPPORT_CHARACTER + supportTuple.second});
+    for (auto& supportPair : SUPPORT_LIST) {
+        auto curSupportEntry = std::make_shared<SupportEntry>(SupportEntry{index, &supportPair});
         allList.push_back(curSupportEntry);
 
-        if (characterSupportListMap.find(supportTuple.first) == end(characterSupportListMap)) {
-            supportListList.push_back({supportTuple.first, {curSupportEntry}});
-            characterSupportListMap[supportTuple.first] = &(supportListList.back());
+        if (characterSupportListMap.find(supportPair.first) == end(characterSupportListMap)) {
+            supportListList.push_back({supportPair.first, {curSupportEntry}});
+            characterSupportListMap[supportPair.first] = &(supportListList.back());
         } else {
-            characterSupportListMap[supportTuple.first]->list.push_back(curSupportEntry);
+            characterSupportListMap[supportPair.first]->list.push_back(curSupportEntry);
         }
 
-        if (characterSupportListMap.find(supportTuple.second) == end(characterSupportListMap)) {
-            supportListList.push_back({supportTuple.second, {curSupportEntry}});
-            characterSupportListMap[supportTuple.second] = &(supportListList.back());
+        if (characterSupportListMap.find(supportPair.second) == end(characterSupportListMap)) {
+            supportListList.push_back({supportPair.second, {curSupportEntry}});
+            characterSupportListMap[supportPair.second] = &(supportListList.back());
         } else {
-            characterSupportListMap[supportTuple.second]->list.push_back(curSupportEntry);
+            characterSupportListMap[supportPair.second]->list.push_back(curSupportEntry);
         }
 
         index++;

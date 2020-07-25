@@ -23,8 +23,9 @@ class SupportEditGui : public tsl::Gui {
     virtual tsl::elm::Element* createUI() override {
         // A OverlayFrame is the base element every overlay consists of. This will draw the default Title and Subtitle.
         // If you need more information in the header or want to change it's look, use a HeaderOverlayFrame.
-        auto frame = new tsl::elm::OverlayFrame(m_supportEntry.entryName,
-                                                "LEFT/RIGHT = Switch digit\nX = Increase | Y = Decrease");
+        auto frame = new tsl::elm::OverlayFrame(
+            m_supportEntry.p_pair->first + feth::SUPPORT_CHARACTER + m_supportEntry.p_pair->second,
+            "LEFT/RIGHT = Switch digit\nX = Increase | Y = Decrease");
 
         // A list that can contain sub elements and handles scrolling
         auto list = new tsl::elm::List();
@@ -97,7 +98,9 @@ class SupportListGui : public tsl::Gui {
             for (auto& supportEntry : m_supportList.list) {
                 auto supportPoints = feth::getSupportPointAtIndex(supportEntry->index);
                 std::string supportPointsStr = std::to_string(supportPoints);
-                auto* p_supportEntryListItem = new tsl::elm::ListItem(supportEntry->entryName);
+                auto* p_supportEntryListItem = new tsl::elm::ListItem(
+                    m_supportList.displayName != supportEntry->p_pair->first ? supportEntry->p_pair->first
+                                                                             : supportEntry->p_pair->second);
                 p_supportEntryListItem->setValue(supportPointsStr);
 
                 p_supportEntryListItem->setClickListener(
