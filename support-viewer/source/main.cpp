@@ -76,7 +76,7 @@ class SupportEditGui : public tsl::Gui {
 class SupportListGui : public tsl::Gui {
    private:
     feth::SupportList m_supportList;
-    tsl::elm::ToggleListItem* mp_needUpdateSupportEntryListItem = nullptr;
+    tsl::elm::ListItem* mp_needUpdateSupportEntryListItem = nullptr;
     size_t m_needUpdateIndex;
 
    public:
@@ -97,15 +97,18 @@ class SupportListGui : public tsl::Gui {
             for (auto& supportEntry : m_supportList.list) {
                 auto supportPoints = feth::getSupportPointAtIndex(supportEntry->index);
                 std::string supportPointsStr = std::to_string(supportPoints);
-                auto* p_supportEntryListItem =
-                    new tsl::elm::ToggleListItem(supportEntry->entryName, true, supportPointsStr, supportPointsStr);
+                auto* p_supportEntryListItem = new tsl::elm::ListItem(supportEntry->entryName);
+                p_supportEntryListItem->setValue(supportPointsStr);
 
-                p_supportEntryListItem->setStateChangedListener(
-                    [this, p_supportEntryListItem, supportEntry, supportPoints](bool toggleState) {
-                        p_supportEntryListItem->setState(true);
-                        tsl::changeTo<SupportEditGui>(*supportEntry, supportPoints);
-                        mp_needUpdateSupportEntryListItem = p_supportEntryListItem;
-                        m_needUpdateIndex = supportEntry->index;
+                p_supportEntryListItem->setClickListener(
+                    [this, p_supportEntryListItem, supportEntry, supportPoints](s64 key) {
+                        if (key & KEY_A) {
+                            tsl::changeTo<SupportEditGui>(*supportEntry, supportPoints);
+                            mp_needUpdateSupportEntryListItem = p_supportEntryListItem;
+                            m_needUpdateIndex = supportEntry->index;
+                            return true;
+                        }
+                        return false;
                     });
 
                 p_list->addItem(p_supportEntryListItem);
