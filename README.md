@@ -1,33 +1,46 @@
-# Fire Emblem: Three Houses - Item Trainer
+# Fire Emblem: Three Houses - Utility Overlays
+
+## Item Trainer
+![item trainer demo](docs/images/items.gif)
+
+## Class Edit
+![class edit demo](docs/images/class.gif)
+
+## Support Edit
+![support edit demo](docs/images/support.gif)
+
+---
+
+# Details about the Item Trainer
 * This overlay allows the user to manually add or edit items in the Convoy using the ID assigned to that item.
-* It also has shorcuts to set certain categories of items to x99 stock in the Convoy.
+* It also has shortcuts to set certain categories of items to x99 stock in the Convoy.
 
 ## Select Specific Item to Edit
 * This will add the item to the Convoy if not owned already, or update the item if it exists already.
 * When a new item is added, the Convoy amount number will increase, refresh the menu by scrolling to another tab and back to see the added item.
 * An item in a unit's inventory counts as it not being in the Convoy.
 
-![Quick Edit Example](/docs/images/Example1.jpg)
+![Quick Edit Example](docs/images/Example1.jpg)
 
 ### Item ID
 * Set 4 digit ID for the item you want to add/edit.
-* [Refer to the text file for a listing of all item IDs.](/docs/feth_item_ids.txt)
-* Only weapons/equipment/item IDs should be used. Dishes/gambits/magic IDs will just take up a Convoy slot and not be visible in game.
+* [Refer to the text file for a listing of all item IDs.](docs/feth_item_ids.txt)
+* Only weapons/equipment/item IDs should be used. Dishes/gambits/magic IDs will just take up a Convoy slot and not be visible in-game.
 
 ### Item Durability
 * All items have a durability count attached to them.
-* Consumables can be set beyond their max, and a unit can carry that full stack. Useful for quickly eating Stat Boosters.
-* Setting it to 100 can used to make weapons infinite use, this is normally applied for Equipment and Broken/Rusty weapons. For consumables, the number will decrease when using.
+* Consumables can be set beyond their max, and a unit can carry the whole stack. Useful for quickly eating Stat Boosters.
+* Setting it to 100 can make weapons infinite use, this is normally applied for Equipment and Broken/Rusty weapons. For consumables, the number will decrease when using.
 * Same items stack together in the Convoy depending on Durability. So to make sure Equipment (Rings, Shields, etc) stack properly, have the durability set to 100 for those.
 
 ### Item Amount
 * This is how many of the item is to be made or edited to.
 
 ## Quick Edit Multiple Items
-* This menu will quickly let you set certain item categories you already have in your Convoy to x99. With certain options toggable.
+* This menu will quickly let you set certain item categories you already have in your Convoy to x99. With certain options togglable.
 * To keep things "clean", leave the options to the defaults to only boost existing items to x99 when pressing each category.
 
-![Quick Edit Example](/docs/images/Example2.jpg)
+![Quick Edit Example](docs/images/Example2.jpg)
 
 ### Items to Edit
 ```
@@ -119,3 +132,9 @@ Off
 ```
 1161 - Trade Secret
 ```
+
+# Credit
+
+**Jacien** - for being the benefactor of this project as well as providing info and testing. This project would not have taken place without him.
+
+Falo on GBAtemp - for info from his work on the save editor
