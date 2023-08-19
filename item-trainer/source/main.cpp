@@ -31,7 +31,7 @@ class MainGui : public tsl::Gui {
 
         auto* p_addListItem = new tsl::elm::ListItem("Set Specific Item");
         p_addListItem->setClickListener([this](s64 key) {
-            if (key & KEY_A) {
+            if (key & HidNpadButton_A) {
                 tsl::changeTo<AddGui>();
                 return true;
             }
@@ -63,7 +63,7 @@ class MainGui : public tsl::Gui {
             auto* p_sealListItem = new tsl::elm::ListItem(menuEntry.name);
             auto& itemIdSet = menuEntry.itemIdSet;
             p_sealListItem->setClickListener([this, itemIdSet](s64 key) {
-                if (key & KEY_A) {
+                if (key & HidNpadButton_A) {
                     auto p_durabilityToSet = m_maxDurability ? &feth::MAX_ITEM_DURABILITY : nullptr;
                     auto p_amountToSet = m_maxAmount ? &feth::MAX_ITEM_AMOUNT : nullptr;
                     feth::setItemsWithIdSet(&itemIdSet, p_durabilityToSet, p_amountToSet, m_addIfNotPresent);
@@ -77,7 +77,7 @@ class MainGui : public tsl::Gui {
         // Owned Items
         auto* p_allListItem = new tsl::elm::ListItem("Owned Items");
         p_allListItem->setClickListener([this](s64 key) {
-            if (key & KEY_A) {
+            if (key & HidNpadButton_A) {
                 auto p_durabilityToSet = m_maxDurability ? &feth::MAX_ITEM_DURABILITY : nullptr;
                 auto p_amountToSet = m_maxAmount ? &feth::MAX_ITEM_AMOUNT : nullptr;
                 feth::setItemsWithIdSet(nullptr, p_durabilityToSet, p_amountToSet, false);
@@ -144,7 +144,7 @@ class AddGui : public tsl::Gui {
         list->addItem(new tsl::elm::CategoryHeader("Item ID", false));
 
         p_idSelectionListItem->setClickListener([this, p_idSelectionListItem, p_durabilitySelectionListItem](s64 key) {
-            if (key & KEY_DOWN) {
+            if (key & HidNpadButton_AnyDown) {
                 p_idSelectionListItem->setText(getDigitString(m_idDigits));
                 p_durabilitySelectionListItem->setText(
                     getDigitStringWithHighlight(m_durabilityDigits, m_curDurabilityHighlightDigit));
@@ -164,12 +164,12 @@ class AddGui : public tsl::Gui {
 
         p_durabilitySelectionListItem->setClickListener(
             [this, p_durabilitySelectionListItem, p_idSelectionListItem, p_amountSelectionListItem](s64 key) {
-                if (key & KEY_UP) {
+                if (key & HidNpadButton_AnyUp) {
                     p_durabilitySelectionListItem->setText(getDigitString(m_durabilityDigits));
                     p_idSelectionListItem->setText(getDigitStringWithHighlight(m_idDigits, m_curIdHighlightDigit));
                     return true;
                 }
-                if (key & KEY_DOWN) {
+                if (key & HidNpadButton_AnyDown) {
                     p_durabilitySelectionListItem->setText(getDigitString(m_durabilityDigits));
                     p_amountSelectionListItem->setText(
                         getDigitStringWithHighlight(m_amountDigits, m_curAmountHighlightDigit));
@@ -190,13 +190,13 @@ class AddGui : public tsl::Gui {
 
         p_amountSelectionListItem->setClickListener(
             [this, p_amountSelectionListItem, p_durabilitySelectionListItem](s64 key) {
-                if (key & KEY_UP) {
+                if (key & HidNpadButton_AnyUp) {
                     p_amountSelectionListItem->setText(getDigitString(m_amountDigits));
                     p_durabilitySelectionListItem->setText(
                         getDigitStringWithHighlight(m_durabilityDigits, m_curDurabilityHighlightDigit));
                     return true;
                 }
-                if (key & KEY_DOWN) {
+                if (key & HidNpadButton_AnyDown) {
                     p_amountSelectionListItem->setText(getDigitString(m_amountDigits));
                     return true;
                 }
@@ -215,7 +215,7 @@ class AddGui : public tsl::Gui {
 
         auto* p_setItemListItem = new tsl::elm::ListItem("Confirm");
         p_setItemListItem->setClickListener([this, p_amountSelectionListItem](s64 key) {
-            if (key & KEY_A) {
+            if (key & HidNpadButton_A) {
                 auto idValue = getDigitValue(m_idDigits);
                 if (idValue > feth::MAX_ITEM_ID) return false;         // avoid oob ids
                 if (getDigitValue(m_amountDigits) == 0) return false;  // avoid 0 amount
@@ -225,7 +225,7 @@ class AddGui : public tsl::Gui {
                 return true;
             }
 
-            if (key & KEY_UP) {
+            if (key & HidNpadButton_AnyUp) {
                 p_amountSelectionListItem->setText(
                     getDigitStringWithHighlight(m_amountDigits, m_curAmountHighlightDigit));
             }

@@ -1,45 +1,30 @@
 {
     "configurations": [
         {
-            "name": "DKP Aarch64 Windows",
-            "includePath": [
-                "C:/devkitPro/devkitA64/aarch64-none-elf/include/**",
-                "C:/devkitPro/devkitA64/lib/gcc/aarch64-none-elf/8.3.0/include/**",
-                "C:/devkitPro/libnx/include/**",
-                "C:/devkitPro/portlibs/switch/include/**",
-                "C:/devkitPro/portlibs/switch/include/freetype2/**",
-                "${workspaceFolder}/include/**",
-                "${workspaceFolder}/libs/libtesla/include/**"
-            ],
-            "defines": [
-                "SWITCH",
-                "__SWITCH__",
-                "__aarch64__"
-            ],
-            "compilerPath": "C:/devkitPro/devkitA64/bin/aarch64-none-elf-g++",
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
-        },
-        {
             "name": "DKP Aarch64 Linux",
             "includePath": [
                 "/opt/devkitpro/devkitA64/aarch64-none-elf/include/**",
+                "/opt/devkitpro/devkitA64/lib/gcc/aarch64-none-elf/13.1.0/include/**",
                 "/opt/devkitpro/libnx/include/**",
                 "/opt/devkitpro/portlibs/switch/include/**",
                 "/opt/devkitpro/portlibs/switch/include/**",
                 "/opt/devkitpro/portlibs/switch/include/freetype2/**",
-                "${workspaceFolder}/libs/libtesla/include/**"
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/libs/libtesla/include/**",
+                "${workspaceFolder}/libs/atmosphere-libs/libstratosphere/include/**",
+                "${workspaceFolder}/libs/atmosphere-libs/libvapours/include/**"
             ],
             "defines": [
                 "SWITCH",
                 "__SWITCH__",
-                "__aarch64__"
+                "__aarch64__",
+                "ATMOSPHERE_OS_HORIZON"
             ],
             "compilerPath": "/opt/devkitpro/devkitA64/bin/aarch64-none-elf-g++",
             "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "cppStandard": "c++20",
+            "intelliSenseMode": "gcc-arm64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

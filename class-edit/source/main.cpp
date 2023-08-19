@@ -69,7 +69,7 @@ class MainGui : public tsl::Gui {
             for (auto& rosterEntry : feth::getRosterEntries()) {
                 auto* p_rosterCharacterListItem = new tsl::elm::ListItem(rosterEntry.name);
                 p_rosterCharacterListItem->setClickListener([rosterEntry](s64 key) {
-                    if (key & KEY_A) {
+                    if (key & HidNpadButton_A) {
                         tsl::changeTo<ClassListGui>(rosterEntry.index);
                         return true;
                     }

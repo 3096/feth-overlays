@@ -35,7 +35,7 @@ class SupportEditGui : public tsl::Gui {
             new tsl::elm::ListItem(getDigitStringWithHighlight(m_supportDigits, m_curSupportHighlightDigit));
 
         p_idSelectionListItem->setClickListener([this, p_idSelectionListItem](s64 key) {
-            if (key & KEY_DOWN) {
+            if (key & HidNpadButton_AnyDown) {
                 p_idSelectionListItem->setText(getDigitString(m_supportDigits));
                 return true;
             }
@@ -52,12 +52,12 @@ class SupportEditGui : public tsl::Gui {
 
         auto* p_setItemListItem = new tsl::elm::ListItem("Save");
         p_setItemListItem->setClickListener([this, p_idSelectionListItem](s64 key) {
-            if (key & KEY_A) {
+            if (key & HidNpadButton_A) {
                 feth::setSupportPointAtIndex(m_supportEntry.index, getDigitValue(m_supportDigits));
                 return true;
             }
 
-            if (key & KEY_UP) {
+            if (key & HidNpadButton_AnyUp) {
                 p_idSelectionListItem->setText(
                     getDigitStringWithHighlight(m_supportDigits, m_curSupportHighlightDigit));
             }
@@ -105,7 +105,7 @@ class SupportListGui : public tsl::Gui {
 
                 p_supportEntryListItem->setClickListener(
                     [this, p_supportEntryListItem, supportEntry, supportPoints](s64 key) {
-                        if (key & KEY_A) {
+                        if (key & HidNpadButton_A) {
                             tsl::changeTo<SupportEditGui>(*supportEntry, supportPoints);
                             mp_needUpdateSupportEntryListItem = p_supportEntryListItem;
                             m_needUpdateIndex = supportEntry->index;
@@ -155,7 +155,7 @@ class MainGui : public tsl::Gui {
             for (auto& character : supportCollection.supportListList) {
                 auto* p_characterListItem = new tsl::elm::ListItem(character.displayName);
                 p_characterListItem->setClickListener([character](s64 key) {
-                    if (key & KEY_A) {
+                    if (key & HidNpadButton_A) {
                         tsl::changeTo<SupportListGui>(character);
                         return true;
                     }

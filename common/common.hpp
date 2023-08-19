@@ -543,16 +543,16 @@ using Digits = std::vector<int8_t>;
 auto updateDigitsWithKey(Digits& digits, int& curHighlightDigit, u64 key) -> bool {
     auto changed = false;
 
-    if (key & KEY_X) {
+    if (key & HidNpadButton_X) {
         digits[curHighlightDigit]++;
         changed = true;
-    } else if (key & KEY_Y) {
+    } else if (key & HidNpadButton_Y) {
         digits[curHighlightDigit]--;
         changed = true;
-    } else if (key & KEY_LEFT) {
+    } else if (key & HidNpadButton_AnyLeft) {
         curHighlightDigit--;
         changed = true;
-    } else if (key & KEY_RIGHT) {
+    } else if (key & HidNpadButton_AnyRight) {
         curHighlightDigit++;
         changed = true;
     }

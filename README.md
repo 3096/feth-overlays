@@ -138,3 +138,9 @@ Off
 **Jacien** - for being the benefactor of this project as well as providing info and testing. This project would not have taken place without him.
 
 Falo on GBAtemp - for info from his work on the save editor
+
+# Building
+
+```sh
+LIBSTRAT=<directory containing lib folder containing libstratosphere.a> make
+```
